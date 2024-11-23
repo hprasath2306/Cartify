@@ -8,11 +8,12 @@ generator client {
 }
 
 model Product {
-  id          Int     @id @default(autoincrement())
+  id          Int         @id @default(autoincrement())
   name        String
   description String?
   image       String?
   price       Int
+  OrderItem   OrderItem[]
 }
 
 model User {
@@ -22,4 +23,24 @@ model User {
   role     String  @default("user")
   name     String?
   address  String?
+  Order    Order[]
+}
+
+model Order {
+  id        Int         @id @default(autoincrement())
+  createdAt DateTime    @default(now())
+  status    String      @default("New")
+  userId    Int
+  user      User        @relation(fields: [userId], references: [id])
+  OrderItem OrderItem[]
+}
+
+model OrderItem {
+  id        Int     @id @default(autoincrement())
+  orderId   Int
+  productId Int
+  quantity  Int
+  price     Int
+  order     Order   @relation(fields: [orderId], references: [id])
+  product   Product @relation(fields: [productId], references: [id])
 }
