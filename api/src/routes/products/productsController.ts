@@ -1,8 +1,7 @@
 import { Request, Response } from "express";
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../db/client";
 import _ from 'lodash';
 
-const prisma = new PrismaClient();
 
 export async function listProducts(req: Request, res: Response) {
   try {

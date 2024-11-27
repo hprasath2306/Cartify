@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
+import prisma from "../../db/client";
 
-const prisma = new PrismaClient();
 
 export async function createOrder(req: Request, res: Response) {
   try {

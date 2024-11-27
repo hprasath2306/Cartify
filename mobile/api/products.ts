@@ -1,4 +1,4 @@
-const API_URL = "https://cartify-api-9fme.onrender.com";
+const API_URL = "http://10.0.2.2:3000";
 
 export async function listProducts() {
   const res = await fetch(`${API_URL}/products`);

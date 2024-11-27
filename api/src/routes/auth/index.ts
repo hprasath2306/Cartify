@@ -2,10 +2,8 @@ import { Router } from "express";
 import { validateData } from "../../middlewares/validationMiddleware";
 import { loginSchema, userSchema } from "../../schemas/schemas";
 import bcrypt from "bcryptjs";
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../db/client";
 import jwt from "jsonwebtoken";
-
-const prisma = new PrismaClient();
 
 const router = Router();
 
